@@ -1,5 +1,5 @@
 const axios = require('axios');
-let id = 1;
+let id = 14;
 
 module.exports = {
   initialize: (req, res) => {
@@ -32,23 +32,23 @@ module.exports = {
       .get('http://18.216.95.88:3004/suggestions', {
         params: { id }
       })
-      .then(({ data }) => res.send(JSON.stringify(data)))
-      .catch(err => res.send(JSON.stringify(err)));
+      .then(({ data }) => res.status(200).send(JSON.stringify(data)))
+      .catch(err => res.status(404).send(JSON.stringify(err)));
   },
   reviews: (req, res) => {
+    let endpoint = req.originalUrl;
     axios
-      .get('http://18.191.191.154:3003/reviews', {
+      .get('http://18.191.191.154:3003' + endpoint, {
         params: { id }
       })
-      .then(({ data }) => res.send(JSON.stringify(data)))
-      .catch(err => res.send(err));
+      .then(({ data }) => res.status(200).send(JSON.stringify(data)))
+      .catch(err => res.status(400).send(err));
   },
-  reviewsStats: (req, res) => {
+  search: (req, res) => {
+    let endpoint = req.originalUrl;
     axios
-      .get('http://18.191.191.154:3003/reviews/stats', {
-        params: { id }
-      })
-      .then(({ data }) => res.send(JSON.stringify(data)))
-      .catch(err => res.send(err));
-  },
+      .get('http://107.23.168.202:3001' + endpoint)
+      .then(({ data }) => res.status(200).send(JSON.stringify(data)))
+      .catch((err) => res.status(404).send(err));
+  }
 };

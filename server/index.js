@@ -5,7 +5,7 @@ const cors = require('cors');
 const morgan = require('morgan');
 const axios = require('axios');
 const PORT = 3000;
-const { initialize, details, suggestions, reviews, colorChange, reviewsStats } = require('./controllers.js');
+const { initialize, details, suggestions, reviews, colorChange, reviewsStats, search } = require('./controllers.js');
 
 const app = express();
 
@@ -19,7 +19,7 @@ app.use('/abibas/product', details);
 app.use('/abibas/color', colorChange);
 app.use('/suggestions' , suggestions);
 app.use('/reviews', reviews);
-app.use('/reviews/stats', reviewsStats);
 app.use('/product', initialize);
+app.use('/search', search);
 
 app.listen(PORT, () => console.log('Listening on PORT', PORT));
