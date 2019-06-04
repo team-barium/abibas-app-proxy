@@ -5,12 +5,7 @@
 React | Express | MongoDB | Amazon EC2, S3
 
 ## Team Members
-Team members include:
-
 Justin Choi (@jmkchoi)
-
 Taylor Bantle (@tbantle22)
-
 Andrew Ahn (@andrewdahn)
-
 Gabriella Pernama (@gabriellapernama)
